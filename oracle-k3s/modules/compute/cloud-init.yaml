@@ -3,4 +3,11 @@ package_update: true
 package_upgrade: true
 
 runcmd:
+  # Oracle Linux 8 firewalld blocks k3s traffic — OCI security lists handle this instead
+  - systemctl stop firewalld && systemctl disable firewalld || true
   - curl -sfL https://get.k3s.io | sh -
+  - until systemctl is-active --quiet k3s; do sleep 10; done
+  - mkdir -p /home/opc/.kube
+  - cp /etc/rancher/k3s/k3s.yaml /home/opc/.kube/config
+  - chown opc:opc /home/opc/.kube/config
+  - chmod 600 /home/opc/.kube/config

@@ -23,28 +23,28 @@ resource "oci_core_security_list" "this" {
   compartment_id = var.compartment_ocid
   vcn_id         = oci_core_vcn.this.id
 
-  # SSH
+  # SSH — restricted to your IP
   ingress_security_rules {
     protocol = "6"
-    source   = "0.0.0.0/0"
+    source   = var.allowed_cidr
     tcp_options { min = 22 max = 22 }
   }
 
-  # K8s API
+  # K8s API — restricted to your IP
   ingress_security_rules {
     protocol = "6"
-    source   = "0.0.0.0/0"
+    source   = var.allowed_cidr
     tcp_options { min = 6443 max = 6443 }
   }
 
-  # HTTP
+  # HTTP — open for workloads
   ingress_security_rules {
     protocol = "6"
     source   = "0.0.0.0/0"
     tcp_options { min = 80 max = 80 }
   }
 
-  # HTTPS
+  # HTTPS — open for workloads
   ingress_security_rules {
     protocol = "6"
     source   = "0.0.0.0/0"
@@ -62,7 +62,7 @@ resource "oci_core_subnet" "this" {
   vcn_id         = oci_core_vcn.this.id
   cidr_block     = var.subnet_cidr
 
-  route_table_id = oci_core_route_table.this.id
+  route_table_id    = oci_core_route_table.this.id
   security_list_ids = [oci_core_security_list.this.id]
 
   prohibit_public_ip_on_vnic = false

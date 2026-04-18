@@ -1,0 +1,17 @@
+# Terraform state and local cache
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+
+# Variable files with secrets
+terraform.tfvars
+*.auto.tfvars
+
+# Retrieved kubeconfig — contains cluster credentials
+kubeconfig
+
+# OCI private key if stored locally
+*.pem

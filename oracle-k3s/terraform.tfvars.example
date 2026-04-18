@@ -1,0 +1,19 @@
+# OCI authentication — find these in OCI Console > Profile > API Keys
+tenancy_ocid     = "ocid1.tenancy.oc1..aaaa..."
+user_ocid        = "ocid1.user.oc1..aaaa..."
+fingerprint      = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
+private_key_path = "~/.oci/oci_api_key.pem"
+region           = "us-ashburn-1"
+
+# Compartment — for free tier simplicity, use the root compartment (same as tenancy_ocid)
+compartment_ocid = "ocid1.tenancy.oc1..aaaa..."
+
+# SSH keys — public key is placed on the instance, private key is used locally to retrieve kubeconfig
+ssh_public_key       = "ssh-rsa AAAAB3NzaC1yc2E... user@host"
+ssh_private_key_path = "~/.ssh/id_rsa"
+
+# Restrict SSH and K8s API to your IP — run: curl -s ifconfig.me
+allowed_cidr = "1.2.3.4/32"
+
+# Email to notify if any OCI charges are detected
+alert_email = "you@example.com"
