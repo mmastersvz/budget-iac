@@ -1,11 +1,11 @@
-# iac-on-a-budget
+# budget-iac
 
 Zero-cost infrastructure on [Oracle Cloud](https://www.oracle.com/cloud/) — [k3s](https://k3s.io) cluster with [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) GitOps. Uses only [Always Free](https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm) resources.
 
 ## Structure
 
 ```
-iac-on-a-budget/
+budget-iac/
 ├── oracle-k3s/          Terraform — provisions k3s node on OCI Always Free tier
 ├── bootstrap/
 │   ├── argocd/          Scripts — installs ArgoCD and initialises GitOps
