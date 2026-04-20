@@ -57,6 +57,6 @@ while true; do
   fi
 
   echo ""
-  echo "Waiting ${RETRY_INTERVAL}s before next cycle... (Ctrl-C to stop) [$(date '+%Y-%m-%d %H:%M:%S')]"
+  echo "${cycle}: Waiting ${RETRY_INTERVAL}s before next cycle... (Ctrl-C to stop) [$(date '+%Y-%m-%d %H:%M:%S')]"
   sleep "$RETRY_INTERVAL"
 done
